@@ -27,39 +27,41 @@ const Addblog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const carImage = form.carImg.value;
-    const carName = form.carName.value;
-    const carBrand = form.brand.value;
-    const carType = form.type.value;
-    const carPrice = form.carPrice.value;
-    const carDescription = form.description.value;
-    const carRating = form.rating.value;
-    const carInfo = {
-      carImage,
-      carName,
-      carBrand,
-      carType,
-      carPrice,
-      carDescription,
-      carRating,
+    const title = form.blogTitle.value;
+    const blogImage = form.blogImg.value;
+    const category = form.category.value;
+    const shortDescription = form.shortDescription.value;
+    const longDescription = form.longDescription.value;
+    
+    const blogData = {
+      title,
+      blogImage,
+      category,
+      shortDescription,
+      longDescription,
+      addedTime: new Date(),
+      
     };
+
+    console.log(blogData)
     fetch(
-      "https://ph-brand-shop-assignment-server-f0np7f9b2-sujit-mandal.vercel.app/car",
+      "http://localhost:5000/api/v1/create-new-blog",
       {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(carInfo),
+        body: JSON.stringify(blogData),
       }
     )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
           //   toast.success("Item added successfully");
+          console.log(data);
         }
       });
-    form.reset();
+    // form.reset();
   };
   return (
     <div className="bg-[#435C70] m-10 p-5 text-white w-full md:w-2/3 mx-auto">
@@ -93,7 +95,7 @@ const Addblog = () => {
             name="category"
             required
           >
-            <option value="">Select a brand</option>
+            <option value="">Select a Category</option>
             {blogCategories.map((category, index) => (
               <option key={index} value={category}>
                 {category}
