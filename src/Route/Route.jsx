@@ -13,7 +13,7 @@ const route = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('http://localhost:5000/api/v1/recent-blogs'),
+        // loader:()=>fetch('http://localhost:5000/api/v1/recent-blogs'),
       },
       {
         path: "/add-new-blog",

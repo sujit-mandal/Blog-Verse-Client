@@ -1,14 +1,12 @@
 import BlogCard from "../Components/BlogCard/BlogCard";
-// import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-const Home = () => {
-  // const blogData = useLoaderData();
+const Featuredblogs = () => {
 
   const { data } = useQuery({
     queryKey: ["blogdata"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/recent-blogs");
+      const res = await fetch("http://localhost:5000/api/v1/featured-blogs");
       return res.json();
     },
   });
@@ -27,4 +25,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Featuredblogs;

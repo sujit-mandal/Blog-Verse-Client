@@ -1,27 +1,26 @@
 // import toast from "react-hot-toast";
 
+import { capitalizeWords } from "../Utilitis/Capitalize";
+
 const Addblog = () => {
   const blogCategories = [
-    "Tech and Gadgets",
-    "Travel and Explore",
-    "Food Adventures",
-    "Health & Fitness",
-    "Self Improvement",
-    "Fashion & Style",
-    "Home Decoration",
-    "Parenting Tips",
-    "Finance & Money",
-    "Wellness & Care",
-    "Pop Culture",
-    "DIY Projects",
-    "Book Reviews",
-    "Eco-Friendly",
-    "Business Insights",
-    "Gaming World",
-    "Learning Hub",
-    "Sports & More",
-    "Mental Wellness",
-    "Science & Tech",
+    "tech-and-gadgets",
+    "travel-and-explore",
+    "food-adventures",
+    "health-&-fitness",
+    "self-improvement",
+    "fashion-&-style",
+    "home-decoration",
+    "parenting-tips",
+    "finance-&-money",
+    "diy-projects",
+    "book-reviews",
+    "eco-friendly",
+    "business-insights",
+    "gaming-world",
+    "sports-&-more",
+    "mental-wellness",
+    "science-&-tech",
   ];
 
   const handleSubmit = (e) => {
@@ -32,7 +31,7 @@ const Addblog = () => {
     const category = form.category.value;
     const shortDescription = form.shortDescription.value;
     const longDescription = form.longDescription.value;
-    
+        
     const blogData = {
       title,
       blogImage,
@@ -98,7 +97,7 @@ const Addblog = () => {
             <option value="">Select a Category</option>
             {blogCategories.map((category, index) => (
               <option key={index} value={category}>
-                {category}
+                {capitalizeWords(category)}
               </option>
             ))}
           </select>
