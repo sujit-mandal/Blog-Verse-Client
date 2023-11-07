@@ -5,8 +5,6 @@ import { capitalizeWords } from "../Utilitis/Capitalize";
 
 const Allblog = () => {
 
- 
-
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const blogCategories = [

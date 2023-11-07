@@ -1,8 +1,11 @@
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { capitalizeWords } from "../Utilitis/Capitalize";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Addblog = () => {
+  const { user } = useContext(AuthContext);
   const blogCategories = [
     "tech-and-gadgets",
     "travel-and-explore",
@@ -31,32 +34,30 @@ const Addblog = () => {
     const category = form.category.value;
     const shortDescription = form.shortDescription.value;
     const longDescription = form.longDescription.value;
-        
+
     const blogData = {
       title,
       blogImage,
       category,
       shortDescription,
       longDescription,
-      addedTime: new Date(),
-      
+      userName: user?.displayName,
+      userMail: user?.email,
+      userPhoto: user?.photoURL,
     };
 
-    console.log(blogData)
-    fetch(
-      "http://localhost:5000/api/v1/create-new-blog",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(blogData),
-      }
-    )
+    console.log(blogData);
+    fetch("http://localhost:5000/api/v1/create-new-blog", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(blogData),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          //   toast.success("Item added successfully");
+          toast.success("Item added successfully");
           console.log(data);
         }
       });
