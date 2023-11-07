@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Addblog from "../Pages/Addblog";
 import Allblog from "../Pages/Allblog";
 import Featuredblogs from "../Pages/Featuredblogs";
+import Wishlist from "../Pages/Wishlist";
 
 const route = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const route = createBrowserRouter([
       {
         path: "/featured-blogs",
         element: <Featuredblogs></Featuredblogs>,
+      },
+      {
+        path: "/wishlist-blogs",
+        element: <Wishlist></Wishlist>,
       },
     ],
   },
