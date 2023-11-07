@@ -1,8 +1,25 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 import "./Navbar.css";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logged out successfully.");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+      });
+  };
   return (
     <div>
       <nav className=" block w-full rounded-xl border bg-opacity-80 py-2 px-4 text-black shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 ">
@@ -62,13 +79,43 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
+
           <div className="flex items-center">
-            <button className="px-3 py-1 border-gray-300 border-[1px] rounded-lg mr-3 ">
-              Sign Up
-            </button>
-            <button className="px-3 py-1 bg-black text-white rounded-lg">
-              Log In
-            </button>
+            {user && (
+              <div className="flex items-center">
+                <p className=" border-[1px] border-[#F5A629] px-2 py-1 rounded-lg mr-2">
+                  {user?.displayName}
+                </p>
+                <img
+                  className="w-10 h-10 rounded-full mr-2"
+                  src={user?.photoURL}
+                  alt="user photo"
+                />
+              </div>
+            )}
+
+            {user ? (
+              <button
+                onClick={() => handleLogOut()}
+                className="middle none center rounded-lg bg-gradient-to-tr from-[#F5A629] to-[#f8a216] py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-yellow-500/80 transition-all hover:shadow-lg hover:shadow-yellow-500/50 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                type="button"
+                data-ripple-light="true"
+              >
+                <span>Logout</span>
+              </button>
+            ) : (
+              <div>
+                <button className="px-3 py-1 border-gray-300 border-[1px] rounded-lg mr-3 ">
+                  Sign Up
+                </button>
+                <button
+                  onClick={() => navigate("/login")}
+                  className="px-3 py-1 bg-black text-white rounded-lg"
+                >
+                  Log In
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </nav>

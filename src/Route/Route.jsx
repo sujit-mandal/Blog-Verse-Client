@@ -6,6 +6,7 @@ import Addblog from "../Pages/Addblog";
 import Allblog from "../Pages/Allblog";
 import Featuredblogs from "../Pages/Featuredblogs";
 import Wishlist from "../Pages/Wishlist";
+import BlogDetails from "../Pages/BlogDetails";
 
 const route = createBrowserRouter([
   {
@@ -33,11 +34,17 @@ const route = createBrowserRouter([
         path: "/wishlist-blogs",
         element: <Wishlist></Wishlist>,
       },
+      {
+        path: "/blog-details/:id",
+        element: <BlogDetails></BlogDetails>,
+        // loader: ({params}) =>
+        //   fetch(`http://localhost:5000/api/v1/blog-details/${params.id}`),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login></Login>,
   },
 ]);
 

@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 const BlogCard = ({ blog }) => {
   return (
     <section className="py-10">
@@ -39,9 +42,11 @@ const BlogCard = ({ blog }) => {
               <p className="mb-4 text-base font-light">
                 {blog?.shortDescription}
               </p>
-              <span className="inline-block cursor-pointer select-none rounded-full border border-gray-800 bg-gray-800 px-2 py-1 text-center align-middle text-sm font-semibold leading-normal text-white no-underline shadow-sm">
+              <Link to={`/blog-details/${blog?._id}`}>
+              
+              <button className="inline-block cursor-pointer select-none rounded-full border border-gray-800 bg-gray-800 px-2 py-1 text-center align-middle text-sm font-semibold leading-normal text-white no-underline shadow-sm">
                 Learn More
-              </span>
+              </button></Link>
             </div>
           </a>
         </article>

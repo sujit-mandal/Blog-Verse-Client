@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import SocialLogin from "../../Components/SocialLogin/SocialLogin";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialLogin from "../Components/SocialLogin/SocialLogin";
+import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 
