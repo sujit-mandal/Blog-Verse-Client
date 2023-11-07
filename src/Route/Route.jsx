@@ -4,6 +4,7 @@ import MainLayout from "../Layout/MainLayout";
 import Login from "../Pages/Login";
 import Addblog from "../Pages/Addblog";
 import Allblog from "../Pages/Allblog";
+import Featuredblogs from "../Pages/Featuredblogs";
 
 const route = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const route = createBrowserRouter([
       {
         path: "/all-blog-posts",
         element: <Allblog></Allblog>,
+      },
+      {
+        path: "/featured-blogs",
+        element: <Featuredblogs></Featuredblogs>,
       },
     ],
   },
