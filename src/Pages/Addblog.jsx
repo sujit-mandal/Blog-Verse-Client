@@ -61,10 +61,10 @@ const Addblog = () => {
           console.log(data);
         }
       });
-    // form.reset();
+    form.reset();
   };
   return (
-    <div className="bg-[#435C70] m-10 p-5 text-white w-full md:w-2/3 mx-auto">
+    <div className="bg-[#10B981] m-10 p-5 text-white w-full md:w-2/3 mx-auto">
       <h3 className="text-3xl pb-4">Add a New Blog</h3>
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex flex-col md:flex-row gap-5">
@@ -73,7 +73,7 @@ const Addblog = () => {
             <input
               type="text"
               name="blogTitle"
-              className="block w-full bg-[#54657D] focus:bg-[#6f85a4] p-3 "
+              className="block w-full bg-[#2de0a5] focus:bg-[#179b6f] p-3 "
               required
             />
           </div>
@@ -83,7 +83,7 @@ const Addblog = () => {
           <input
             type="text"
             name="blogImg"
-            className="block w-full bg-[#54657D] focus:bg-[#6f85a4] p-3 "
+            className="block w-full bg-[#2de0a5] focus:bg-[#179b6f] p-3 "
             required
           />
         </div>
@@ -91,7 +91,7 @@ const Addblog = () => {
         <div className="flex-1 space-y-2">
           <label>Blog Category</label>
           <select
-            className="block bg-[#54657D]  focus:bg-[#6f85a4] p-3 w-full"
+            className="block bg-[#2de0a5]  focus:bg-[#179b6f] p-3 w-full"
             name="category"
             required
           >
@@ -107,7 +107,7 @@ const Addblog = () => {
         <div className="space-y-2">
           <label>Short Description</label>
           <textarea
-            className="block  bg-[#54657D] focus:bg-[#6f85a4] p-3 w-full h-24 resize-none"
+            className="block  bg-[#2de0a5] focus:bg-[#179b6f] p-3 w-full h-24 resize-none"
             name="shortDescription"
             required
           ></textarea>
@@ -116,7 +116,7 @@ const Addblog = () => {
         <div className="space-y-2">
           <label>Long Description</label>
           <textarea
-            className="block  bg-[#54657D] focus:bg-[#6f85a4] p-3 w-full h-24 resize-none"
+            className="block  bg-[#2de0a5] focus:bg-[#179b6f] p-3 w-full h-24 resize-none"
             name="longDescription"
             required
           ></textarea>

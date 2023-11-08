@@ -22,7 +22,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <nav className=" block w-full rounded-xl border bg-opacity-80 py-2 px-4 text-black shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 ">
+      <nav className=" block w-full rounded-xl rounded-b-none border bg-opacity-80 py-2 px-4 text-black shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 ">
         <div className="container space-y-4 md:space-y-0 mx-auto flex flex-col md:flex-row items-center justify-between text-black">
           <Link>
             <img src={logo} alt="" className="w-36 h-16" />

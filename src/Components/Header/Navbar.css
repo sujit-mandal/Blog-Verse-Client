@@ -1,6 +1,7 @@
 ul li .active{
-    background-color: #F5A629;
+    color: #10B981;
     padding: 8px 10px;
     border-radius: 10px;
     font-weight: bold;
 }
+

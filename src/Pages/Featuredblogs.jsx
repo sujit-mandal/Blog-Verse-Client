@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 
 const Featuredblogs = () => {
+  const navigate = useNavigate();
   const handleButtonClick = (row) => {
-    console.log("Button clicked for row:", row);
+    navigate(`/blog-details/${row?._id}`);
   };
   const columns = [
     {
@@ -21,11 +23,23 @@ const Featuredblogs = () => {
       selector: (row) => row.shortDescription,
     },
     {
+      name: "User",
+      selector: (row) => row.userName,
+      width: "120px",
+    },
+    {
+      name: "User Profile",
+      selector: (row) => (
+        <img src={row.userPhoto} className="w-10 h-10 rounded-full mx-auto" />
+      ),
+      width: "120px",
+    },
+    {
       name: "Actions",
       cell: (row) => (
         <button
           style={{
-            backgroundColor: "blue", // Customize button background color
+            backgroundColor: "#10B981", // Customize button background color
             color: "white", // Customize button text color
             padding: "5px 10px", // Customize button padding
             borderRadius: "5px", // Customize button border radius
@@ -36,6 +50,7 @@ const Featuredblogs = () => {
           View
         </button>
       ),
+      width: "120px",
     },
   ];
 
@@ -49,7 +64,8 @@ const Featuredblogs = () => {
     },
     rows: {
       style: {
-        fontSize: "14px", // Customize cell font size
+        fontSize: "14px",
+        fontWeight: "bold",
       },
     },
   };
@@ -61,7 +77,6 @@ const Featuredblogs = () => {
       return res.json();
     },
   });
-  console.log(data);
   return (
     <div>
       <h1 className="mb-12 text-center font-sans text-5xl font-bold">

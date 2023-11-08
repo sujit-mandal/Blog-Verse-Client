@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import toggleDropdown from "../Utilitis/DropdownComment";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import Comment from "../Components/Comment/Comment";
 
 const BlogDetails = () => {
   const { user } = useContext(AuthContext);
@@ -13,21 +13,21 @@ const BlogDetails = () => {
     const blog = await fetch(
       `http://localhost:5000/api/v1/blog-details/${params.id}`
     ).then((res) => res.json());
-    const comment = await fetch(
-            `http://localhost:5000/api/v1/comment/${params.id}`
-          ).then(res=> res.json());
+    const comments = await fetch(
+      `http://localhost:5000/api/v1/comment/${params.id}`
+    ).then((res) => res.json());
 
-    return {blog, comment}
+    return { blog, comments };
   };
 
   // console.log(getData);
-  const { data, isLoading } = useQuery({
-    queryKey: ["blogDetails", params.id], 
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["blogDetails", params.id],
     queryFn: getData,
   });
 
-  const {blog, comment} =data || {};
-  console.log(blog, comment);
+  const { blog, comments } = data || {};
+  // console.log(blog, comment);
 
   // const { data: comment, isLoading } = useQuery({
   //   queryKey: ["comment", params.id], // A unique query key
@@ -41,9 +41,9 @@ const BlogDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const comment = e.target.comment.value;
+    const commentText = e.target.comment.value;
     const commentData = {
-      comment,
+      commentText,
       userName: user?.displayName,
       userMail: user?.email,
       userPhoto: user?.photoURL,
@@ -62,10 +62,20 @@ const BlogDetails = () => {
         if (data.acknowledged) {
           toast.success("Item added successfully");
           console.log(data);
+          refetch();
         }
       });
   };
-
+  const handleRemove = (id) => {
+    fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
   console.log(params);
   // console.log(blog);
   return (
@@ -132,73 +142,14 @@ const BlogDetails = () => {
             Post comment
           </button>
         </form>
-        <article className="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
-          <footer className="flex justify-between items-center mb-2">
-            <div className="flex items-center">
-              <p className="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white">
-                <img
-                  className="mr-2 w-6 h-6 rounded-full"
-                  src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                  alt="Michael Gough"
-                />
-                Michael Gough
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                <time pubdate dateTime="2022-02-08" title="February 8th, 2022">
-                  Feb. 8, 2022
-                </time>
-              </p>
-            </div>
-            <div className="relative">
-              <button
-                id="dropdownCommentButton"
-                className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                type="button"
-                onClick={() => toggleDropdown("dropdownComment")}
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 16 3"
-                >
-                  <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                </svg>
-              </button>
-              <div
-                id="dropdownComment"
-                className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 absolute right-0"
-              >
-                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                  <li>
-                    <a
-                      href="#"
-                      className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Edit
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Remove
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </footer>
-          <p>
-            Very straight-to-point article. Really worth time reading. Thank
-            you! But tools are just the instruments for the UX designers. The
-            knowledge of the design tools are as important as the creation of
-            the design strategy.
-          </p>
-        </article>
       </section>
+      {comments?.map((comment) => (
+        <Comment
+          key={comment._id}
+          comment={comment}
+          handleRemove={handleRemove}
+        ></Comment>
+      ))}
     </div>
   );
 };

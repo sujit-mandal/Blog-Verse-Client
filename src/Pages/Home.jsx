@@ -1,10 +1,10 @@
 import BlogCard from "../Components/BlogCard/BlogCard";
-// import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import NewsLetter from "../Components/NewsLetter/NewsLetter";
+import Trending from "../Components/Trending/Trending";
+import Banner from "../Components/Header/Banner";
 
 const Home = () => {
-  // const blogData = useLoaderData();
-  
 
   const { data } = useQuery({
     queryKey: ["blogdata"],
@@ -16,14 +16,17 @@ const Home = () => {
   console.log(data);
   return (
     <div>
-      <h1 className="mb-12 text-center font-sans text-5xl font-bold">
-        Our Blog
+      <Banner></Banner>
+      <h1 className="mb-3 mt-2 text-center font-sans text-5xl font-bold">
+        Most Recent Blog
       </h1>
       <div className="grid grid-cols-3">
         {data?.map((blog) => (
           <BlogCard key={blog._id} blog={blog}></BlogCard>
         ))}
       </div>
+      <NewsLetter></NewsLetter>
+      <Trending></Trending>
     </div>
   );
 };
