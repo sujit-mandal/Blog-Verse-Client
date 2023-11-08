@@ -45,7 +45,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/update-blog/:id",
-        element: <UpdateBlog></UpdateBlog>,
+        element: (
+          <PrivateRoute>
+            <UpdateBlog></UpdateBlog>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
