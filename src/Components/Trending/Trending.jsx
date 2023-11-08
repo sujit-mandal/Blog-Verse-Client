@@ -12,7 +12,7 @@ const Trending = () => {
   const { data: trendings, isLoading } = useQuery({
     queryKey: ["trendingBlogData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/trending-blogs");
+      const res = await fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/trending-blogs");
       return res.json();
     },
   });

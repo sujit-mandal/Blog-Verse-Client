@@ -32,7 +32,7 @@ const Allblog = () => {
     queryKey: ["blogdata", selectedCategory, searchValue],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
+        `https://ph-blog-site-assignment-server.vercel.app/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
       );
       return res.json();
     },
