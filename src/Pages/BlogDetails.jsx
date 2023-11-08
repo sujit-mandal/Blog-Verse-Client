@@ -33,10 +33,9 @@ const BlogDetails = () => {
 
   const { blog, comments } = data || {};
 
-  const { _id } = blog;
+  const { blogId } = blog;
 
-  // const time = blog.addedTime?.split("T");
-  // console.log(time);
+  const time = blog.addedTime?.split("T");
   console.log(blog);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,6 +67,7 @@ const BlogDetails = () => {
           }
         });
     }
+    e.target.reset();
   };
   const handleRemove = (id, email) => {
     if (email === user?.email) {
@@ -103,8 +103,7 @@ const BlogDetails = () => {
                   <div className="flex items-center gap-1">
                     <AiOutlineCalendar></AiOutlineCalendar>
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      {/* {time[0]} */}
-                      Time
+                      Posted: {time[0]}
                     </p>
                   </div>
 
@@ -124,7 +123,7 @@ const BlogDetails = () => {
       {blog?.userMail === user?.email ? (
         <div className="flex items-center gap-2">
           <p className="font-bold underline">Want to modify your post?</p>
-          <Link to={`/update-blog/${_id}`}>
+          <Link to={`/update-blog/${blogId}`}>
             <button className="px-2 py-1 bg-[#10B981] text-white text-lg rounded-lg font-semibold">
               Modify
             </button>
@@ -149,7 +148,7 @@ const BlogDetails = () => {
               id="comment"
               name="comment"
               rows="6"
-              className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+              className="pl-2  w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
               placeholder="Write a comment..."
               required
             ></textarea>

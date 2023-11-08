@@ -18,6 +18,7 @@ const BlogCard = ({ blog }) => {
 
   const handleWishlist = () => {
     const wishlist = {
+      blogId: _id,
       title,
       blogImage,
       category,

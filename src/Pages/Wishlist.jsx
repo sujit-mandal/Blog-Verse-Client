@@ -3,13 +3,17 @@ import WishlistCard from "../Components/WishlistCard/WishlistCard";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Wishlist = () => {
   // const blogData = useLoaderData();
   const { user } = useContext(AuthContext);
-  console.log(user?.email);
 
-  const { data: blogs, isLoading } = useQuery({
+  const {
+    data: blogs,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["wishlistData"],
     queryFn: async () => {
       const res = await fetch(
@@ -28,9 +32,12 @@ const Wishlist = () => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        refetch();
+        toast.success("Post successfully removed from wishlist.");
+      });
   };
- 
+
   return (
     <div>
       <h1 className="mb-12 text-center font-sans text-5xl font-bold">
@@ -38,7 +45,11 @@ const Wishlist = () => {
       </h1>
       <div className="grid grid-cols-3">
         {blogs?.map((blog) => (
-          <WishlistCard key={blog._id} blog={blog} handleRemove={handleRemove}></WishlistCard>
+          <WishlistCard
+            key={blog._id}
+            blog={blog}
+            handleRemove={handleRemove}
+          ></WishlistCard>
         ))}
       </div>
     </div>

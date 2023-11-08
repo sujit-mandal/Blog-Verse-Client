@@ -8,6 +8,7 @@ import Featuredblogs from "../Pages/Featuredblogs";
 import Wishlist from "../Pages/Wishlist";
 import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog";
+import PrivateRoute from "./PrivateRoute";
 
 const route = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/wishlist-blogs",
-        element: <Wishlist></Wishlist>,
+        element: (
+          <PrivateRoute>
+            <Wishlist></Wishlist>,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog-details/:id",

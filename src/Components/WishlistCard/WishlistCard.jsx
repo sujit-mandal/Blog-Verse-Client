@@ -1,4 +1,4 @@
-import { GiBookmarklet } from "react-icons/gi";
+import { BsTrash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -8,6 +8,7 @@ const WishlistCard = ({ blog, handleRemove }) => {
   const { user } = useContext(AuthContext);
   const {
     _id,
+    blogId,
     title,
     blogImage,
     addedTime,
@@ -15,11 +16,11 @@ const WishlistCard = ({ blog, handleRemove }) => {
     shortDescription,
     longDescription,
   } = blog;
-
+  console.log(blog);
   return (
     <section className="py-10">
       <div className="  justify-center px-4 sm:grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3">
-        <article className="mx-auto my-4 flex w-full flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white text-gray-900 transition hover:translate-y-2 hover:shadow-lg">
+        <article className="mx-auto my-4 flex w-full flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white text-gray-900  hover:shadow-lg">
           <img src={blogImage} className="h-56 w-full object-cover" alt="" />
           <div className="flex-auto px-6 py-5">
             <span className="mb-2 flex items-center text-sm font-semibold">
@@ -50,13 +51,13 @@ const WishlistCard = ({ blog, handleRemove }) => {
             </h3>
             <p className="mb-4 text-base font-light">{shortDescription}</p>
             <div className="flex justify-between items-center">
-              <Link to={`/blog-details/${_id}`}>
+              <Link to={`/blog-details/${blogId}`}>
                 <button className="inline-block cursor-pointer select-none rounded-full border border-gray-800 bg-gray-800 px-2 py-1 text-center align-middle text-sm font-semibold leading-normal text-white no-underline shadow-sm">
                   Learn More
                 </button>
               </Link>
-              <button onClick={()=>handleRemove(_id)} className="text-4xl">
-                <GiBookmarklet></GiBookmarklet>
+              <button onClick={() => handleRemove(_id)} className="text-4xl">
+                <BsTrash></BsTrash>
               </button>
             </div>
           </div>
