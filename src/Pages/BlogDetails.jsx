@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import Comment from "../Components/Comment/Comment";
+import { AiOutlineCalendar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const BlogDetails = () => {
   const { user } = useContext(AuthContext);
@@ -25,20 +27,17 @@ const BlogDetails = () => {
     queryKey: ["blogDetails", params.id],
     queryFn: getData,
   });
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   const { blog, comments } = data || {};
-  // console.log(blog, comment);
 
-  // const { data: comment, isLoading } = useQuery({
-  //   queryKey: ["comment", params.id], // A unique query key
-  //   queryFn: async () => {
-  //     const res = await fetch(
-  //       `http://localhost:5000/api/v1/comment/${params.id}`
-  //     );
-  //     return res.json();
-  //   },
-  // });
+  const { _id } = blog;
 
+  // const time = blog.addedTime?.split("T");
+  // console.log(time);
+  console.log(blog);
   const handleSubmit = (e) => {
     e.preventDefault();
     const commentText = e.target.comment.value;
@@ -50,34 +49,41 @@ const BlogDetails = () => {
       postID: params?.id,
     };
 
-    fetch("http://localhost:5000/api/v1/add-blog-comment", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(commentData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          toast.success("Item added successfully");
-          console.log(data);
+    if (blog?.userMail === user?.email) {
+      toast.error("You can not comment your own post");
+    } else {
+      fetch("http://localhost:5000/api/v1/add-blog-comment", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(commentData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Comment added successfully");
+            console.log(data);
+            refetch();
+          }
+        });
+    }
+  };
+  const handleRemove = (id, email) => {
+    if (email === user?.email) {
+      fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("Your Comment Deleted.");
           refetch();
-        }
-      });
+        });
+    } else {
+      toast.error("You can not delete another user comment.");
+    }
   };
-  const handleRemove = (id) => {
-    fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        refetch();
-      });
-  };
-  console.log(params);
-  // console.log(blog);
+
   return (
     <div className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 mx-auto w-full max-w-2xl">
       <div className="flex justify-between px-4  ">
@@ -87,20 +93,21 @@ const BlogDetails = () => {
               <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                 <img
                   className="mr-4 w-16 h-16 rounded-full"
-                  src=""
-                  alt="Jese Leos"
+                  src={blog?.userPhoto}
+                  alt={blog?.userName}
                 />
                 <div>
-                  <a
-                    href="#"
-                    rel="author"
-                    className="text-xl font-bold text-gray-900 dark:text-white"
-                  >
-                    Jese Leos
-                  </a>
-                  <p className="text-base text-gray-500 dark:text-gray-400">
-                    Graphic Designer, educator & CEO Flowbite
+                  <p className="text-base text-gray-900 dark:text-gray-400">
+                    {blog?.userName}
                   </p>
+                  <div className="flex items-center gap-1">
+                    <AiOutlineCalendar></AiOutlineCalendar>
+                    <p className="text-base text-gray-500 dark:text-gray-400">
+                      {/* {time[0]} */}
+                      Time
+                    </p>
+                  </div>
+
                   <p className="text-base text-gray-500 dark:text-gray-400"></p>
                 </div>
               </div>
@@ -114,6 +121,18 @@ const BlogDetails = () => {
           </header>
         </article>
       </div>
+      {blog?.userMail === user?.email ? (
+        <div className="flex items-center gap-2">
+          <p className="font-bold underline">Want to modify your post?</p>
+          <Link to={`/update-blog/${_id}`}>
+            <button className="px-2 py-1 bg-[#10B981] text-white text-lg rounded-lg font-semibold">
+              Modify
+            </button>
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
 
       <section className="not-format">
         <div className="flex justify-between items-center mb-6">

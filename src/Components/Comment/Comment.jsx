@@ -27,7 +27,7 @@ const Comment = ({ comment, handleRemove }) => {
               <AiOutlineEdit></AiOutlineEdit>
             </button>
 
-            <button onClick = {()=>handleRemove(_id)}>
+            <button onClick = {()=>handleRemove(_id, userMail)}>
               <BsTrash3></BsTrash3>
             </button>
           </div>

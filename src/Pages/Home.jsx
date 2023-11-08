@@ -5,15 +5,17 @@ import Trending from "../Components/Trending/Trending";
 import Banner from "../Components/Header/Banner";
 
 const Home = () => {
-
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["blogdata"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/api/v1/recent-blogs");
       return res.json();
     },
   });
-  console.log(data);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <Banner></Banner>

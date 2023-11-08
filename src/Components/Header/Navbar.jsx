@@ -83,9 +83,6 @@ const Navbar = () => {
           <div className="flex items-center">
             {user && (
               <div className="flex items-center">
-                <p className=" border-[1px] border-[#F5A629] px-2 py-1 rounded-lg mr-2">
-                  {user?.displayName}
-                </p>
                 <img
                   className="w-10 h-10 rounded-full mr-2"
                   src={user?.photoURL}
@@ -97,7 +94,7 @@ const Navbar = () => {
             {user ? (
               <button
                 onClick={() => handleLogOut()}
-                className="middle none center rounded-lg bg-gradient-to-tr from-[#F5A629] to-[#f8a216] py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-yellow-500/80 transition-all hover:shadow-lg hover:shadow-yellow-500/50 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                className="middle none center rounded-lg bg-gradient-to-tr from-[#10B981] to-[#078d60] py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/80 transition-all hover:shadow-lg hover:shadow-green-500/50 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
                 type="button"
                 data-ripple-light="true"
               >

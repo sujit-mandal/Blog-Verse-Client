@@ -1,4 +1,11 @@
+import toast from "react-hot-toast";
+
 const NewsLetter = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    toast.success("Thank you for subscribing to our newsletter");
+  };
   return (
     <div>
       <section className="bg-gray-200 dark:bg-gray-900">
@@ -11,7 +18,7 @@ const NewsLetter = () => {
               Stay up to date with the roadmap progress, announcements and
               exclusive discounts feel free to sign up with your email.
             </p>
-            <form action="#">
+            <form onSubmit={handleSubmit}>
               <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
                 <div className="relative w-full">
                   <label className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -34,13 +41,13 @@ const NewsLetter = () => {
                     placeholder="Enter your email"
                     type="email"
                     id="email"
-                    required=""
+                    required
                   />
                 </div>
                 <div>
                   <button
                     type="submit"
-                    className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-[#10B981] border-[#10B981] sm:rounded-none sm:rounded-r-lg hover:bg-[#16805c] focus:ring-4 focus:ring-primary-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-[#10B981] border-[#10B981] sm:rounded-none sm:rounded-r-lg hover:bg-[#16805c] "
                   >
                     Subscribe
                   </button>

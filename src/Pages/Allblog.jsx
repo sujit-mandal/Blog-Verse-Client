@@ -12,18 +12,13 @@ const Allblog = () => {
     "travel-and-explore",
     "food-adventures",
     "health-&-fitness",
-    "self-improvement",
     "fashion-&-style",
     "home-decoration",
-    "parenting-tips",
     "finance-&-money",
     "diy-projects",
     "book-reviews",
-    "eco-friendly",
     "business-insights",
-    "gaming-world",
     "sports-&-more",
-    "mental-wellness",
     "science-&-tech",
   ];
 
