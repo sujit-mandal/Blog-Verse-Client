@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import MainLayout from "../Layout/MainLayout";
 import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 import Addblog from "../Pages/Addblog";
 import Allblog from "../Pages/Allblog";
 import Featuredblogs from "../Pages/Featuredblogs";
@@ -51,11 +52,16 @@ const route = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/login",
-        element: <Login></Login>,
-      },
+      
     ],
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
   },
 ]);
 

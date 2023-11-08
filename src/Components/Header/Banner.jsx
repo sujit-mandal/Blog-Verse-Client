@@ -10,7 +10,7 @@ import { FiUser } from "react-icons/fi";
 
 const Banner = () => {
   const { data: slides, isLoading } = useQuery({
-    queryKey: ["bannerdata"],
+    queryKey: ["bannerData"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/api/v1/banner-blogs");
       return res.json();

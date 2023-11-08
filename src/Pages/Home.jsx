@@ -5,8 +5,8 @@ import Trending from "../Components/Trending/Trending";
 import Banner from "../Components/Header/Banner";
 
 const Home = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["blogdata"],
+  const { data: blogs, isLoading } = useQuery({
+    queryKey: ["recentBlogData"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/api/v1/recent-blogs");
       return res.json();
@@ -15,7 +15,6 @@ const Home = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
   return (
     <div>
       <Banner></Banner>
@@ -23,7 +22,7 @@ const Home = () => {
         Most Recent Blog
       </h1>
       <div className="grid grid-cols-3">
-        {data?.map((blog) => (
+        {blogs?.map((blog) => (
           <BlogCard key={blog._id} blog={blog}></BlogCard>
         ))}
       </div>

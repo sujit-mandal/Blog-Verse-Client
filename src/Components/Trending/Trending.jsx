@@ -9,13 +9,17 @@ import "swiper/css/scrollbar";
 import TrendingSlider from "./TrendingSlider";
 
 const Trending = () => {
-  const { data: blogs, isLoading } = useQuery({
-    queryKey: ["blogdata"],
+  const { data: trendings, isLoading } = useQuery({
+    queryKey: ["trendingBlogData"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/api/v1/trending-blogs");
       return res.json();
     },
   });
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  console.log(trendings);
 
   return (
     <div className="bg-gray-200 mt-5">
@@ -39,7 +43,7 @@ const Trending = () => {
           },
         }}
       >
-        {blogs?.map((blog) => (
+        {trendings?.map((blog) => (
           <SwiperSlide key={blog._id}>
             <TrendingCard blog={blog} />
           </SwiperSlide>
