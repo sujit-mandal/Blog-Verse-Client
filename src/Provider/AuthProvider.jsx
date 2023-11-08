@@ -39,11 +39,6 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(false);
       setUser(currentUser);
-      if(currentUser){
-        axios.post().then(res=>{
-          
-        })
-      }
     });
     return () => {
       unSubscribe();
