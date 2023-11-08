@@ -18,10 +18,10 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <h1 className="mb-3 mt-2 text-center font-sans text-5xl font-bold">
+      <h1 className="mb-3 mt-2 text-center font-sans text-xl md:text-3xl lg:text-5xl font-bold">
         Most Recent Blog
       </h1>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {blogs?.map((blog) => (
           <BlogCard key={blog._id} blog={blog}></BlogCard>
         ))}

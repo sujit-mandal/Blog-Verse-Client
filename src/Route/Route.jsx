@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Addblog from "../Pages/Addblog";
 import Allblog from "../Pages/Allblog";
+import ErrorPage from "../Pages/ErrorPage";
 import Featuredblogs from "../Pages/Featuredblogs";
 import Wishlist from "../Pages/Wishlist";
 import BlogDetails from "../Pages/BlogDetails";
@@ -62,6 +63,10 @@ const route = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "*",
+    element: <ErrorPage/>,
   },
 ]);
 

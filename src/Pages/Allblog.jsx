@@ -4,9 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { capitalizeWords } from "../Utilitis/Capitalize";
 
 const Allblog = () => {
-
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchValue, setSearchValue] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const blogCategories = [
     "tech-and-gadgets",
     "travel-and-explore",
@@ -22,43 +21,48 @@ const Allblog = () => {
     "science-&-tech",
   ];
 
-
-  const handleSubmit =(e)=>{
-    console.log("Search button clicked.")
+  const handleSubmit = (e) => {
+    console.log("Search button clicked.");
     e.preventDefault();
     const searchText = e.target.search.value;
     setSearchValue(searchText);
-    
-
-  }
+  };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["blogdata",selectedCategory,searchValue],
+    queryKey: ["blogdata", selectedCategory, searchValue],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`);
+      const res = await fetch(
+        `http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
+      );
       return res.json();
     },
   });
-  if(isLoading){
-    return <p>Loading...</p>
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
   // const data = [];
   console.log(searchValue);
-  console.log(selectedCategory)
-console.log(data);
+  console.log(selectedCategory);
+  console.log(data);
   return (
     <div>
       <div>
         <div className="mx-auto mt-5 w-screen max-w-screen-md leading-6">
-          <form onSubmit={handleSubmit} className="relative flex w-full flex-col justify-between rounded-lg border p-2 sm:flex-row sm:items-center sm:p-0">
+          <form
+            onSubmit={handleSubmit}
+            className="relative flex w-full flex-col justify-between rounded-lg border p-2 sm:flex-row sm:items-center sm:p-0"
+          >
             <div className="flex gap-5">
               <label className="focus-within:ring h-14 rounded-md bg-gray-200 px-2 ring-emerald-200">
-                <select onChange={(e)=> setSelectedCategory(e.target.value)}
+                <select
+                  onChange={(e) => setSelectedCategory(e.target.value)}
                   className="bg-transparent px-6 py-4 outline-none"
                   name="category"
                   id="category"
                 >
-                  <option disabled selected >Choose One</option>
+                  <option disabled selected>
+                    Choose One
+                  </option>
                   {blogCategories.map((category) => (
                     <option key={category} value={category}>
                       {capitalizeWords(category)}
@@ -82,7 +86,7 @@ console.log(data);
           </form>
         </div>
       </div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data?.map((blog) => (
           <BlogCard key={blog._id} blog={blog}></BlogCard>
         ))}

@@ -23,7 +23,7 @@ const Trending = () => {
 
   return (
     <div className="bg-gray-200 mt-5">
-      <h1 className=" text-5xl font-semibold pt-2 pb-4 pl-3">
+      <h1 className=" text-2xl md:text-3xl lg:text-5xl font-semibold pt-2 pb-4 pl-3">
         Trending on Blog Verse
       </h1>
       <Swiper

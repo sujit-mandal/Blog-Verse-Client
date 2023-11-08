@@ -46,7 +46,7 @@ const BlogCard = ({ blog }) => {
       });
   };
   return (
-    <section className="py-10">
+    <section className="py-2 md:py-4 lg:py-10">
       <div className="  justify-center px-4 sm:grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3">
         <article className="mx-auto my-4 flex w-full flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white text-gray-900 transition hover:translate-y-2 hover:shadow-lg">
           <img src={blogImage} className="h-56 w-full object-cover" alt="" />

@@ -1,12 +1,10 @@
 import WishlistCard from "../Components/WishlistCard/WishlistCard";
-// import BlogCard from "../Components/BlogCard/BlogCard";
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Wishlist = () => {
-  // const blogData = useLoaderData();
   const { user } = useContext(AuthContext);
 
   const {
@@ -43,7 +41,7 @@ const Wishlist = () => {
       <h1 className="mb-12 text-center font-sans text-5xl font-bold">
         Read on Later..
       </h1>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {blogs?.map((blog) => (
           <WishlistCard
             key={blog._id}
