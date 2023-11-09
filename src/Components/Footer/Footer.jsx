@@ -5,43 +5,38 @@ const Footer = () => {
     <div>
       <footer className="bg-gray-50 dark:bg-gray-800 antialiased">
         <div className="p-4 py-2 mx-auto max-w-screen-xl md:p-8 lg:px-10 lg:py-2">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 About
               </h2>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Career
               </h2>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Privacy Policy
               </h2>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Contact Us
               </h2>
             </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Download
-              </h2>
-            </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-5" />
           <div className="text-center">
             <Link>
               <img src={logo} alt="" className="w-36 h-16 mx-auto" />
             </Link>
             <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
-              © 2021-2022{" "}
-              <a href="#" className="hover:underline">
+              © 2021-2022
+              <Link href="#" className="hover:underline">
                 Blog-Verse™
-              </a>
+              </Link>
               . All Rights Reserved.
             </span>
             <ul className="flex justify-center mt-5 space-x-5">

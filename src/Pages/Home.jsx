@@ -1,6 +1,7 @@
 import BlogCard from "../Components/BlogCard/BlogCard";
 import { useQuery } from "@tanstack/react-query";
 import NewsLetter from "../Components/NewsLetter/NewsLetter";
+import Videosection from "../Components/Videosection/Videosection";
 import Trending from "../Components/Trending/Trending";
 import Banner from "../Components/Header/Banner";
 import { motion, useScroll } from "framer-motion";
@@ -48,6 +49,7 @@ const Home = () => {
             <BlogCard key={blog._id} blog={blog}></BlogCard>
           ))}
         </div>
+        <Videosection></Videosection>
         <NewsLetter></NewsLetter>
         <Trending></Trending>
       </div>

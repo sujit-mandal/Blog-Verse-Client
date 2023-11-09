@@ -6,7 +6,7 @@ import { ScrollRestoration } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto px-3 lg:px-0">
       <ScrollRestoration />
       <Toaster />
       <Navbar></Navbar>
