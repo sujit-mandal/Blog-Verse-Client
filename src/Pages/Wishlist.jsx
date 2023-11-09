@@ -15,7 +15,7 @@ const Wishlist = () => {
     queryKey: ["wishlistData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://ph-blog-site-assignment-server.vercel.app/api/v1/wishlist?email=${user?.email}`
+        `http://localhost:5000/api/v1/wishlist?email=${user?.email}`
       );
       return res.json();
     },
@@ -26,7 +26,7 @@ const Wishlist = () => {
   console.log(blogs);
 
   const handleRemove = (id) => {
-    fetch(`https://ph-blog-site-assignment-server.vercel.app/api/v1/remove-wishlist/${id}`, {
+    fetch(`http://localhost:5000/api/v1/remove-wishlist/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

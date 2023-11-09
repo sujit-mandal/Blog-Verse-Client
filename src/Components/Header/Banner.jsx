@@ -12,7 +12,7 @@ const Banner = () => {
   const { data: slides, isLoading } = useQuery({
     queryKey: ["bannerData"],
     queryFn: async () => {
-      const res = await fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/banner-blogs");
+      const res = await fetch("http://localhost:5000/api/v1/banner-blogs");
       return res.json();
     },
   });

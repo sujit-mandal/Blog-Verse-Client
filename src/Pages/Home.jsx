@@ -8,7 +8,7 @@ const Home = () => {
   const { data: blogs, isLoading } = useQuery({
     queryKey: ["recentBlogData"],
     queryFn: async () => {
-      const res = await fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/recent-blogs");
+      const res = await fetch("http://localhost:5000/api/v1/recent-blogs");
       return res.json();
     },
   });

@@ -42,7 +42,7 @@ const Addblog = () => {
     };
 
     console.log(blogData);
-    fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/create-new-blog", {
+    fetch("http://localhost:5000/api/v1/create-new-blog", {
       method: "POST",
       headers: {
         "content-type": "application/json",
