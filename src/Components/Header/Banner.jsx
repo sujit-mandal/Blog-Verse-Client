@@ -49,7 +49,7 @@ const Banner = () => {
                     </p>
                     <p className ="flex items-center"><BsFire className="text-pink-600"></BsFire>Trending</p>
                     </div>
-                    <h2 className=" mb-4 text-2xl md:text-6xl font-medium md:font-semibold ">
+                    <h2 className=" mb-4 text-2xl hover:text-pink-600 md:text-6xl font-medium md:font-semibold ">
                       {slide?.title}
                     </h2>
                     <div className="flex  items-center gap-2">

@@ -115,7 +115,7 @@ const Navbar = () => {
               </button>
             ) : (
               <div>
-                <button className="px-3 py-1 border-gray-300 border-[1px] rounded-lg mr-3 ">
+                <button onClick={() => navigate("/register")} className="px-3 py-1 border-gray-300 border-[1px] rounded-lg mr-3 ">
                   Sign Up
                 </button>
                 <button

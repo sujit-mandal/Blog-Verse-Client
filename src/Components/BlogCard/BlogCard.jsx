@@ -73,7 +73,6 @@ const BlogCard = ({ blog }) => {
               </svg>
               {capitalizeWords(category)}
             </span>
-            <p>{addedTime}</p>
             <h3 className="mt-4 mb-3 text-xl font-semibold xl:text-2xl">
               {title}
             </h3>

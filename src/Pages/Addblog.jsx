@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { capitalizeWords } from "../Utilitis/Capitalize";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import { motion } from "framer-motion";
 const Addblog = () => {
   const { user } = useContext(AuthContext);
   const blogCategories = [
@@ -59,7 +59,13 @@ const Addblog = () => {
     // form.reset();
   };
   return (
-    <div className="bg-[#10B981] m-10 p-5 text-white w-full md:w-2/3 mx-auto">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+      className="bg-[#10B981] m-10 p-5 text-white w-full md:w-2/3 mx-auto"
+    >
       <h3 className="text-3xl pb-4">Add a New Blog</h3>
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex flex-col md:flex-row gap-5">
@@ -123,7 +129,7 @@ const Addblog = () => {
           value="ADD BLOG NOW"
         />
       </form>
-    </div>
+    </motion.div>
   );
 };
 

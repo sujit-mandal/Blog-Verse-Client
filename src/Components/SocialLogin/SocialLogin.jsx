@@ -21,7 +21,7 @@ const SocialLogin = () => {
       });
   };
   return (
-    <div className="m-5">
+    <div className="m-2">
       <div className="flex items-center gap-3 ">
         <hr className="w-1/2 border-[1px] border-primary-color" />
         <div className="text-white">OR</div>

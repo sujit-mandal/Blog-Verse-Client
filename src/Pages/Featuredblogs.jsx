@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Featuredblogs = () => {
   const navigate = useNavigate();
@@ -12,15 +13,17 @@ const Featuredblogs = () => {
       name: "Serial No",
       selector: (row, index) => index + 1, // Add a "Serial No" column
       sortable: false, // To make it non-sortable
-      width: "120px",
+      width: "105px",
     },
     {
       name: "Blog Title",
       selector: (row) => row.title,
+      width: "400px",
     },
     {
       name: "Short Description",
       selector: (row) => row.shortDescription,
+      width: "300px",
     },
     {
       name: "User",
@@ -66,25 +69,30 @@ const Featuredblogs = () => {
       style: {
         fontSize: "14px",
         fontWeight: "bold",
+        height: "40px",
       },
     },
   };
 
   const { data } = useQuery({
-    queryKey: ["blogdata"],
+    queryKey: ["featuredBlogData"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/api/v1/featured-blogs");
       return res.json();
     },
   });
   return (
-    <div>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 2 }}>
       <h1 className="mb-12 text-center font-sans text-5xl font-bold">
         Featured Blog
       </h1>
 
       {<DataTable columns={columns} data={data} customStyles={customStyles} />}
-    </div>
+    </motion.div>
   );
 };
 

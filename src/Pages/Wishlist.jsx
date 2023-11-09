@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +16,8 @@ const Wishlist = () => {
     queryKey: ["wishlistData"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/wishlist?email=${user?.email}`
+        `http://localhost:5000/api/v1/wishlist?email=${user?.email}`,
+        { credentials: "include" }
       );
       return res.json();
     },
@@ -26,9 +28,12 @@ const Wishlist = () => {
   console.log(blogs);
 
   const handleRemove = (id) => {
-    fetch(`http://localhost:5000/api/v1/remove-wishlist/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `http://localhost:5000/api/v1/remove-wishlist/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         refetch();
@@ -37,7 +42,11 @@ const Wishlist = () => {
   };
 
   return (
-    <div>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 2 }}>
       <h1 className="mb-12 text-center font-sans text-5xl font-bold">
         Read on Later..
       </h1>
@@ -50,7 +59,7 @@ const Wishlist = () => {
           ></WishlistCard>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

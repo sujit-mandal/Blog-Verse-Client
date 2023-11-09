@@ -26,8 +26,8 @@ const Login = () => {
       });
   };
   return (
-    <div className="mt-5 h-full md:h-[75vh]">
-      <div className="w-full mx-auto mt-20 max-w-sm p-4 bg-[#435C70] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+    <div className="mt-5 h-full">
+      <div className="w-full mx-auto  max-w-sm p-4 bg-[#10B981] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
         <h1 className="text-center bg-primary-color py-4 w-full text-white rounded-lg text-2xl font-semibold text-primary-text">
           Login your account
         </h1>
@@ -39,7 +39,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className=" bg-[#54657D] border border-gray-300 text-white text-sm rounded-lg block w-full p-2.5"
+              className=" bg-[#47c098] placeholder:text-black border border-gray-300 text-white text-sm rounded-lg block w-full p-2.5"
               required
             />
           </div>
@@ -49,7 +49,7 @@ const Login = () => {
               type="password"
               placeholder="••••••••"
               name="password"
-              className=" bg-[#54657D] border text-white text-sm rounded-lg block w-full p-2.5"
+              className=" bg-[#47c098] placeholder:text-black border text-white text-sm rounded-lg block w-full p-2.5"
               required
             />
           </div>

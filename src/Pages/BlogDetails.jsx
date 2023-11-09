@@ -13,10 +13,12 @@ const BlogDetails = () => {
 
   const getData = async () => {
     const blog = await fetch(
-      `http://localhost:5000/api/v1/blog-details/${params.id}`,{credentials: 'include'}
+      `http://localhost:5000/api/v1/blog-details/${params.id}`,
+      { credentials: "include" }
     ).then((res) => res.json());
     const comments = await fetch(
-      `http://localhost:5000/api/v1/comment/${params.id}`
+      `http://localhost:5000/api/v1/comment/${params.id}`,
+      { credentials: "include" }
     ).then((res) => res.json());
 
     return { blog, comments };

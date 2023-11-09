@@ -2,6 +2,7 @@ import { useState } from "react";
 import BlogCard from "../Components/BlogCard/BlogCard";
 import { useQuery } from "@tanstack/react-query";
 import { capitalizeWords } from "../Utilitis/Capitalize";
+import { motion } from "framer-motion";
 
 const Allblog = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -29,7 +30,7 @@ const Allblog = () => {
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["blogdata", selectedCategory, searchValue],
+    queryKey: ["allBlogData", selectedCategory, searchValue],
     queryFn: async () => {
       const res = await fetch(
         `http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
@@ -40,12 +41,12 @@ const Allblog = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  // const data = [];
-  console.log(searchValue);
-  console.log(selectedCategory);
-  console.log(data);
   return (
-    <div>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 2 }}>
       <div>
         <div className="mx-auto mt-5 w-screen max-w-screen-md leading-6">
           <form
@@ -91,7 +92,7 @@ const Allblog = () => {
           <BlogCard key={blog._id} blog={blog}></BlogCard>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
