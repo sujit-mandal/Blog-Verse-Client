@@ -16,7 +16,7 @@ const Wishlist = () => {
     queryKey: ["wishlistData"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/wishlist?email=${user?.email}`,
+        `https://ph-blog-site-assignment-server.vercel.app/api/v1/wishlist?email=${user?.email}`,
         { credentials: "include" }
       );
       return res.json();
@@ -29,7 +29,7 @@ const Wishlist = () => {
 
   const handleRemove = (id) => {
     fetch(
-      `http://localhost:5000/api/v1/remove-wishlist/${id}`,
+      `https://ph-blog-site-assignment-server.vercel.app/api/v1/remove-wishlist/${id}`,
       {
         method: "DELETE",
       }

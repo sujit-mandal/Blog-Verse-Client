@@ -13,11 +13,11 @@ const BlogDetails = () => {
 
   const getData = async () => {
     const blog = await fetch(
-      `http://localhost:5000/api/v1/blog-details/${params.id}`,
+      `https://ph-blog-site-assignment-server.vercel.app/api/v1/blog-details/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
     const comments = await fetch(
-      `http://localhost:5000/api/v1/comment/${params.id}`,
+      `https://ph-blog-site-assignment-server.vercel.app/api/v1/comment/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
 
@@ -53,7 +53,7 @@ const BlogDetails = () => {
     if (blog?.userMail === user?.email) {
       toast.error("You can not comment your own post");
     } else {
-      fetch("http://localhost:5000/api/v1/add-blog-comment", {
+      fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/add-blog-comment", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -73,7 +73,7 @@ const BlogDetails = () => {
   };
   const handleRemove = (id, email) => {
     if (email === user?.email) {
-      fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
+      fetch(`https://ph-blog-site-assignment-server.vercel.app/api/v1/delete-comment/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

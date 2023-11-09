@@ -11,7 +11,7 @@ const UpdateBlog = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["blogDetailsData"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/blog/${params.id}`);
+      const res = await fetch(`https://ph-blog-site-assignment-server.vercel.app/api/v1/blog/${params.id}`);
       return res.json();
     },
   });
@@ -60,7 +60,7 @@ const UpdateBlog = () => {
       };
 
       console.log(UpdatedblogData);
-      fetch(`http://localhost:5000/api/v1/update-blog/${params.id}`, {
+      fetch(`https://ph-blog-site-assignment-server.vercel.app/api/v1/update-blog/${params.id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

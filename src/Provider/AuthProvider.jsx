@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("http://localhost:5000/api/v1/jwt", loggedUser, {
+          .post("https://ph-blog-site-assignment-server.vercel.app/api/v1/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/api/v1/logout", loggedUser, {
+          .post("https://ph-blog-site-assignment-server.vercel.app/api/v1/logout", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
