@@ -3,15 +3,17 @@ import Navbar from "../Components/Header/Navbar";
 import Footer from "../Components/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 import { ScrollRestoration } from "react-router-dom";
+import Topnav from "../Components/Header/Topnav";
 
 const MainLayout = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-3 lg:px-0">
+    <div>
       <ScrollRestoration />
       <Toaster />
-      <Navbar></Navbar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+      <Topnav />
+      <Navbar />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

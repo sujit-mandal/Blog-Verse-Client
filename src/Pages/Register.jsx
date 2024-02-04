@@ -58,7 +58,7 @@ const Register = () => {
 
   return (
     <div className="mt-5 ">
-      <div className="mx-auto  mb-5 w-full max-w-sm p-4 bg-[#10B981] rounded-lg shadow sm:p-6 md:p-8">
+      <div className="mx-auto  mb-5 w-full max-w-sm p-4 bg-[#002584] rounded-lg shadow sm:p-6 md:p-8">
         <h1 className="text-center bg-primary-color py-4 w-full text-white rounded-lg text-2xl font-semibold text-primary-text">
           Register your account
         </h1>
@@ -70,7 +70,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Enter your name"
-              className=" bg-[#47c098] placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+              className="  placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             />
           </div>
           <div>
@@ -79,7 +79,7 @@ const Register = () => {
               type="text"
               name="photo"
               placeholder="Enter your photo URL"
-              className=" bg-[#47c098] placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
+              className="  placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
             />
           </div>
           <div>
@@ -88,7 +88,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className=" bg-[#47c098] placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
+              className="  placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
               required
             />
           </div>
@@ -98,7 +98,7 @@ const Register = () => {
               type="password"
               placeholder="••••••••"
               name="password"
-              className=" bg-[#47c098] placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
+              className="  placeholder:text-black border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
               required
             />
           </div>

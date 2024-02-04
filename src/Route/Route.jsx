@@ -11,6 +11,7 @@ import Wishlist from "../Pages/Wishlist";
 import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog";
 import PrivateRoute from "./PrivateRoute";
+import SeeAll from "../Pages/SeeAll";
 
 const route = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const route = createBrowserRouter([
       {
         path: "/all-blog-posts",
         element: <Allblog></Allblog>,
+      },
+      {
+        path: "/see-all-posts",
+        element: <SeeAll></SeeAll>,
       },
       {
         path: "/featured-blogs",

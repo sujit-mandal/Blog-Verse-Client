@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BlogCard from "../Components/BlogCard/BlogCard";
+import TopPostCard from "../Components/BlogCard/TopPostCard";
 import { useQuery } from "@tanstack/react-query";
 import { capitalizeWords } from "../Utilitis/Capitalize";
 import { motion } from "framer-motion";
@@ -33,7 +33,7 @@ const Allblog = () => {
     queryKey: ["allBlogData", selectedCategory, searchValue],
     queryFn: async () => {
       const res = await fetch(
-        `https://ph-blog-site-assignment-server.vercel.app/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
+        `http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
       );
       return res.json();
     },
@@ -89,7 +89,7 @@ const Allblog = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data?.map((blog) => (
-          <BlogCard key={blog._id} blog={blog}></BlogCard>
+          <TopPostCard key={blog._id} blog={blog}></TopPostCard>
         ))}
       </div>
     </motion.div>

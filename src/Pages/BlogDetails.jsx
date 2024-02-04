@@ -6,25 +6,25 @@ import toast from "react-hot-toast";
 import Comment from "../Components/Comment/Comment";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import { SlCalender } from "react-icons/sl";
+import { FaRegComment } from "react-icons/fa";
+import Sidebar from "../Components/Sidebar/Sidebar";
 const BlogDetails = () => {
   const { user } = useContext(AuthContext);
   const params = useParams();
 
   const getData = async () => {
     const blog = await fetch(
-      `https://ph-blog-site-assignment-server.vercel.app/api/v1/blog-details/${params.id}`,
+      `http://localhost:5000/api/v1/blog-details/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
     const comments = await fetch(
-      `https://ph-blog-site-assignment-server.vercel.app/api/v1/comment/${params.id}`,
+      `http://localhost:5000/api/v1/comment/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
 
     return { blog, comments };
   };
-
-  // console.log(getData);
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["blogDetails", params.id],
     queryFn: getData,
@@ -35,10 +35,9 @@ const BlogDetails = () => {
 
   const { blog, comments } = data || {};
 
-  const { blogId } = blog;
+  // const { _id } = blog;
 
   const time = blog.addedTime?.split("T");
-  console.log(blog);
   const handleSubmit = (e) => {
     e.preventDefault();
     const commentText = e.target.comment.value;
@@ -53,7 +52,7 @@ const BlogDetails = () => {
     if (blog?.userMail === user?.email) {
       toast.error("You can not comment your own post");
     } else {
-      fetch("https://ph-blog-site-assignment-server.vercel.app/api/v1/add-blog-comment", {
+      fetch("http://localhost:5000/api/v1/add-blog-comment", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -73,7 +72,7 @@ const BlogDetails = () => {
   };
   const handleRemove = (id, email) => {
     if (email === user?.email) {
-      fetch(`https://ph-blog-site-assignment-server.vercel.app/api/v1/delete-comment/${id}`, {
+      fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -87,89 +86,76 @@ const BlogDetails = () => {
   };
 
   return (
-    <div className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 mx-auto w-full max-w-2xl">
-      <div className="flex justify-between px-4  ">
-        <article className=" format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-          <header className="mb-4 lg:mb-6 not-format">
-            <address className="flex items-center mb-6 not-italic">
-              <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                <img
-                  className="mr-4 w-16 h-16 rounded-full"
-                  src={blog?.userPhoto}
-                  alt={blog?.userName}
-                />
-                <div>
-                  <p className="text-base text-gray-900 dark:text-gray-400">
-                    {blog?.userName}
-                  </p>
-                  <div className="flex items-center gap-1">
-                    <AiOutlineCalendar></AiOutlineCalendar>
-                    <p className="text-base text-gray-500 dark:text-gray-400">
-                      Posted: {time[0]}
-                    </p>
-                  </div>
+    <div className="max-w-screen-xl mx-auto grid grid-cols-3 gap-5">
+      <div className="col-span-2 border-[1px] border-gray-200 p-10">
+        <img
+          src="https://wpdemo.zcubethemes.com/newpress/wp-content/uploads/2021/04/fs-2-1024x781.jpg"
+          alt=""
+        />
 
-                  <p className="text-base text-gray-500 dark:text-gray-400"></p>
-                </div>
-              </div>
-            </address>
-            <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
-              {blog?.title}
-            </h1>
-            <p>{blog?.shortDescription}</p>
-            <img src={blog?.blogImage} />
-            <p>{blog?.longDescription}</p>
-          </header>
-        </article>
-      </div>
-      {blog?.userMail === user?.email ? (
-        <div className="flex items-center gap-2">
-          <p className="font-bold underline">Want to modify your post?</p>
-          <Link to={`/update-blog/${blogId}`}>
-            <button className="px-2 py-1 bg-[#10B981] text-white text-lg rounded-lg font-semibold">
-              Modify
-            </button>
-          </Link>
-        </div>
-      ) : (
-        ""
-      )}
+        <p className="mt-10 text-gray-500">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+          consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt.
+        </p>
 
-      <section className="not-format">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
-            Discussion (20)
-          </h2>
-        </div>
-        <form onSubmit={handleSubmit} className="mb-6">
-          <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label htmlFor="comment" className="sr-only">
-              Your comment
-            </label>
-            <textarea
-              id="comment"
-              name="comment"
-              rows="6"
-              className="pl-2  w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-              placeholder="Write a comment..."
-              required
-            ></textarea>
+        <hr className="mt-14 mb-8" />
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <FaRegComment className="text-[#C5015F]"></FaRegComment>
+            <p className="">No Comments</p>
           </div>
-          <button
-            type="submit"
-            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
-          >
-            Post comment
-          </button>
-        </form>
-      </section>
-      {comments?.map((comment) => (
-        <Comment
-          key={comment._id}
-          comment={comment}
-          handleRemove={handleRemove}
-        ></Comment>
-      ))}
+          <div className="flex items-center gap-2">
+            <SlCalender className="text-[#C5015F]"></SlCalender>
+            <p className="">April 5, 2023</p>
+          </div>
+        </div>
+        <hr className="mt-8" />
+        <p>Leave a Comment</p>
+        <div className="bg-[#F6F6F6] rounded-xl py-16 px-12">
+          <p>
+            Your email address will not be published. Required fields are marked
+            *
+          </p>
+
+          <form>
+            <div className="mb-4 mt-2">
+              <input
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500"
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div className="mb-4">
+              <textarea
+                rows="4"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500"
+                id="comment"
+                placeholder="Enter your comment"
+              ></textarea>
+            </div>
+            <div className="flex justify-end">
+              <button
+                className="bg-[#C5015F] hover:bg-[#c50160e4] text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                Post Comment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="col-span-1">
+        <Sidebar />
+      </div>
     </div>
   );
 };
