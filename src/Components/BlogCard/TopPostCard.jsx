@@ -30,7 +30,7 @@ const TopPostCard = ({ blog }) => {
       userPhoto: user?.photoURL,
     };
 
-    fetch("http://localhost:5000/api/v1/create-wishlist", {
+    fetch("https://blogverse-server.vercel.app/api/v1/create-wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

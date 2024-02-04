@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import Spinner from "../Components/Spinner/Spinner";
 
 const UpdateBlog = () => {
   const params = useParams();
@@ -11,12 +12,12 @@ const UpdateBlog = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["blogDetailsData"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/blog/${params.id}`);
+      const res = await fetch(`https://blogverse-server.vercel.app/api/v1/blog/${params.id}`);
       return res.json();
     },
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
   console.log(params);
   console.log(data);
@@ -60,7 +61,7 @@ const UpdateBlog = () => {
       };
 
       console.log(UpdatedblogData);
-      fetch(`http://localhost:5000/api/v1/update-blog/${params.id}`, {
+      fetch(`https://blogverse-server.vercel.app/api/v1/update-blog/${params.id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

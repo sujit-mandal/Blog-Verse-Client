@@ -1,129 +1,120 @@
-import logo from "../../assets/News-Logo.png";
 import { Link } from "react-router-dom";
+import logo from "../../assets/News-Logo.png";
+import { FaEnvelope, FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { IoLogoTwitter } from "react-icons/io";
 const Footer = () => {
   return (
-    <div>
-      <footer className="bg-gray-50 dark:bg-gray-800 antialiased">
-        <div className="p-4 py-2 mx-auto max-w-screen-xl md:p-8 lg:px-10 lg:py-2">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
-            <div>
-              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                About
-              </h2>
+    <footer className="bg-[#FFFFFF] dark:bg-gray-800 antialiased border-t-4 border-[#C5015F]">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-4 gap-5 py-10">
+        <div className="space-y-3 text-gray-500">
+          <Link>
+            <div className="flex items-center">
+              <img src={logo} alt="" className="w-20 h-12" />
+              <p className="text-3xl font-bold">Blogverse</p>
             </div>
+          </Link>
+          <p>
+            The most popular newspaper in the world. It includes the most
+            popular news.
+          </p>
+          <div className="flex gap-3 items-center ">
+            <FaEnvelope className="text-5xl p-3 bg-[#C5015F] text-white rounded-md" />
             <div>
-              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Career
-              </h2>
-            </div>
-            <div>
-              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Privacy Policy
-              </h2>
-            </div>
-            <div>
-              <h2 className=" text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Contact Us
-              </h2>
+              <p className="hover:text-[#C5015F]">info@blogverse.com</p>
+              <p className="hover:text-[#C5015F]">help@blogverse.com</p>
             </div>
           </div>
-          <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-5" />
-          <div className="text-center">
-            <Link>
-              <img src={logo} alt="" className="w-36 h-16 mx-auto" />
-            </Link>
-            <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
-              © 2021-2022
-              <Link href="#" className="hover:underline">
-                Blog-Verse™
-              </Link>
-              . All Rights Reserved.
-            </span>
-            <ul className="flex justify-center mt-5 space-x-5">
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
-                >
-                  <svg
-                    className="h-4 w-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 8 19"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+        </div>
+        <div className="text-gray-500">
+          <h5 className="text-black text-2xl">Quick Links</h5>
+          <div className="flex items-center gap-5 pt-4">
+            <ul className="space-y-3">
+              <li className="hover:text-[#C5015F] cursor-pointer">Home</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Faq</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Top News</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Recent Blogs
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M12.186 8.672 18.743.947h-2.927l-5.005 5.9-4.44-5.9H0l7.434 9.876-6.986 8.23h2.927l5.434-6.4 4.82 6.4H20L12.186 8.672Zm-2.267 2.671L8.544 9.515 3.2 2.42h2.2l4.312 5.719 1.375 1.828 5.731 7.613h-2.2l-4.699-6.237Z"
-                    />
-                  </svg>
-                </a>
+              <li className="hover:text-[#C5015F] cursor-pointer">Support</li>
+            </ul>
+            <ul className="space-y-3">
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Top Stories
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+              <li className="hover:text-[#C5015F] cursor-pointer">Help</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Featured Posts{" "}
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Editor Choice
+              </li>
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Contact Us
               </li>
             </ul>
           </div>
         </div>
-      </footer>
-    </div>
+        <div className="text-gray-500">
+          <h5 className="text-black text-2xl">Popular Posts</h5>
+          <div className="flex items-center gap-5 pt-4">
+            <ul className="space-y-3">
+              <li className="hover:text-[#C5015F] cursor-pointer">
+                Celebrity News
+              </li>
+              <li className="hover:text-[#C5015F] cursor-pointer">History</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Food</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Music</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Travel</li>
+            </ul>
+            <ul className="space-y-3">
+              <li className="hover:text-[#C5015F] cursor-pointer">Fashion</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Movies</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">TV News</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Education</li>
+              <li className="hover:text-[#C5015F] cursor-pointer">Lifestyle</li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <div className="space-y-2">
+            <img
+              src="https://demo.tagdiv.com/newspaper_lifestyle_pro/wp-content/uploads/2020/06/44-1024x1536.jpg"
+              className="w-36 h-28 rounded-md"
+            />
+            <img
+              src="https://demo.tagdiv.com/newspaper_lifestyle_pro/wp-content/uploads/2020/06/p1.jpg"
+              className="w-36 h-28 rounded-md"
+            />
+          </div>
+          <div className="space-y-2">
+            <img
+              src="https://demo.tagdiv.com/newspaper_lifestyle_pro/wp-content/uploads/2020/06/51-1024x683.jpg"
+              className="w-36 h-28 rounded-md"
+            />
+            <img
+              src="https://demo.tagdiv.com/newspaper_lifestyle_pro/wp-content/uploads/2020/06/53-1024x683.jpg"
+              className="w-36 h-28 rounded-md"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#010E2E] py-2">
+        <div className="max-w-screen-xl mx-auto flex justify-between items-center text-white">
+          <p >Copyright © 2024 Blogverse. All rights reserved.</p>
+          <div className="flex gap-2 items-center ">
+            <div className="p-4 bg-[#3B5998] rounded-md hover:bg-[#C5015F]">
+              <FaFacebookF />
+            </div>
+            <div className="p-4 bg-[#f43abcf8] rounded-md hover:bg-[#C5015F]">
+              <FaInstagram />
+            </div>
+            <div className="p-4 bg-[#07ACDE] rounded-md hover:bg-[#C5015F]">
+              <IoLogoTwitter />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

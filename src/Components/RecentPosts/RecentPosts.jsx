@@ -5,7 +5,7 @@ const RecentPosts = () => {
   const { data: topPosts, isLoading } = useQuery({
     queryKey: ["topPosts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/top-posts");
+      const res = await fetch("https://blogverse-server.vercel.app/api/v1/top-posts");
       return res.json();
     },
   });

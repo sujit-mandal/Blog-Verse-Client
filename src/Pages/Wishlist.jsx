@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import Spinner from "../Components/Spinner/Spinner";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
@@ -16,20 +17,20 @@ const Wishlist = () => {
     queryKey: ["wishlistData"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/wishlist?email=${user?.email}`,
+        `https://blogverse-server.vercel.app/api/v1/wishlist?email=${user?.email}`,
         { credentials: "include" }
       );
       return res.json();
     },
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
   console.log(blogs);
 
   const handleRemove = (id) => {
     fetch(
-      `http://localhost:5000/api/v1/remove-wishlist/${id}`,
+      `https://blogverse-server.vercel.app/api/v1/remove-wishlist/${id}`,
       {
         method: "DELETE",
       }

@@ -93,7 +93,7 @@ const Addblog = () => {
     };
 
     console.log(blogData);
-    fetch("http://localhost:5000/api/v1/create-new-blog", {
+    fetch("https://blogverse-server.vercel.app/api/v1/create-new-blog", {
       method: "POST",
       headers: {
         "content-type": "application/json",

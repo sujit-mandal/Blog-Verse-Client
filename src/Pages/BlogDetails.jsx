@@ -9,17 +9,18 @@ import { Link } from "react-router-dom";
 import { SlCalender } from "react-icons/sl";
 import { FaRegComment } from "react-icons/fa";
 import Sidebar from "../Components/Sidebar/Sidebar";
+import Spinner from "../Components/Spinner/Spinner";
 const BlogDetails = () => {
   const { user } = useContext(AuthContext);
   const params = useParams();
 
   const getData = async () => {
     const blog = await fetch(
-      `http://localhost:5000/api/v1/blog-details/${params.id}`,
+      `https://blogverse-server.vercel.app/api/v1/blog-details/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
     const comments = await fetch(
-      `http://localhost:5000/api/v1/comment/${params.id}`,
+      `https://blogverse-server.vercel.app/api/v1/comment/${params.id}`,
       { credentials: "include" }
     ).then((res) => res.json());
 
@@ -30,7 +31,7 @@ const BlogDetails = () => {
     queryFn: getData,
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
 
   const { blog, comments } = data || {};
@@ -52,7 +53,7 @@ const BlogDetails = () => {
     if (blog?.userMail === user?.email) {
       toast.error("You can not comment your own post");
     } else {
-      fetch("http://localhost:5000/api/v1/add-blog-comment", {
+      fetch("https://blogverse-server.vercel.app/api/v1/add-blog-comment", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -72,7 +73,7 @@ const BlogDetails = () => {
   };
   const handleRemove = (id, email) => {
     if (email === user?.email) {
-      fetch(`http://localhost:5000/api/v1/delete-comment/${id}`, {
+      fetch(`https://blogverse-server.vercel.app/api/v1/delete-comment/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

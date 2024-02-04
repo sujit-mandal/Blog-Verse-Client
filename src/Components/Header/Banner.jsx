@@ -7,18 +7,19 @@ import { FaRegComment } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Spinner from "../Spinner/Spinner";
 
 const Banner = () => {
   const { data: slides, isLoading } = useQuery({
     queryKey: ["bannerData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/banner-blogs");
+      const res = await fetch("https://blogverse-server.vercel.app/api/v1/banner-blogs");
       return res.json();
     },
   });
 
   if (isLoading) {
-    return <p>Loading ...</p>;
+    <Spinner/>
   }
 
   const settings = {

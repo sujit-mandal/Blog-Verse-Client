@@ -5,18 +5,19 @@ import TopPostCard from "../BlogCard/TopPostCard";
 import NewsLetter from "../NewsLetter/NewsLetter";
 import SidebarCard from "../SidebarCard/SidebarCard";
 import SocialLink from "../SocialLink/SocialLink";
+import Spinner from "../Spinner/Spinner";
 const TopPosts = () => {
   const { data: posts, isLoading } = useQuery({
     queryKey: ["recentBlogData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/recent-blogs", {
+      const res = await fetch("https://blogverse-server.vercel.app/api/v1/recent-blogs", {
         credentials: "include",
       });
       return res.json();
     },
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
   return (
     <div className="bg-[#F3F8FB]">

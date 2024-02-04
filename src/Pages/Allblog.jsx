@@ -3,6 +3,7 @@ import TopPostCard from "../Components/BlogCard/TopPostCard";
 import { useQuery } from "@tanstack/react-query";
 import { capitalizeWords } from "../Utilitis/Capitalize";
 import { motion } from "framer-motion";
+import Spinner from "../Components/Spinner/Spinner";
 
 const Allblog = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -33,13 +34,13 @@ const Allblog = () => {
     queryKey: ["allBlogData", selectedCategory, searchValue],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
+        `https://blogverse-server.vercel.app/api/v1/all-blogs?category=${selectedCategory}&q=${searchValue}`
       );
       return res.json();
     },
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
   return (
     <motion.div

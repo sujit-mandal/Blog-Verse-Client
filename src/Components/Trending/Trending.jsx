@@ -5,19 +5,20 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Spinner from "../Spinner/Spinner";
 const Trending = () => {
   const sliderRef = useRef(null);
   const { data: trendingBlog, isLoading } = useQuery({
     queryKey: ["trendingBlogData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/trending-blogs", {
+      const res = await fetch("https://blogverse-server.vercel.app/api/v1/trending-blogs", {
         credentials: "include",
       });
       return res.json();
     },
   });
   if (isLoading) {
-    return <p>Loading...</p>;
+    <Spinner/>
   }
   const settings = {
     infinite: true,
@@ -27,7 +28,7 @@ const Trending = () => {
   };
 
   return (
-    <div className="bg-[#F3F8FB] my-5 py-20">
+    <div className="bg-[#F3F8FB] mt-5 py-20">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex justify-between items-center">
           <h1 className=" text-2xl md:text-3xl lg:text-5xl font-semibold pt-2 pb-4 pl-3">

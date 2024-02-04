@@ -7,7 +7,7 @@ const TopStories = () => {
   const { data: posts, isLoading } = useQuery({
     queryKey: ["bannerData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/top-stories");
+      const res = await fetch("https://blogverse-server.vercel.app/api/v1/top-stories");
       return res.json();
     },
   });
