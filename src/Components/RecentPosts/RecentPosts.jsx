@@ -5,7 +5,9 @@ const RecentPosts = () => {
   const { data: topPosts, isLoading } = useQuery({
     queryKey: ["topPosts"],
     queryFn: async () => {
-      const res = await fetch("https://blogverse-server.vercel.app/api/v1/top-posts");
+      const res = await fetch(
+        "https://blogverse-server.vercel.app/api/v1/top-posts"
+      );
       return res.json();
     },
   });
@@ -14,7 +16,9 @@ const RecentPosts = () => {
       <h1 className="text-5xl font-bold mb-10">Top Posts</h1>
       <div className="grid grid-cols-3 gap-10">
         <div className="col-span-2">
-          {topPosts?.slice(0,4).map((topPost) => <RecentPostCard key={topPost?._id} topPost={topPost} />)}
+          {topPosts?.slice(0, 4).map((topPost) => (
+            <RecentPostCard key={topPost?._id} topPost={topPost} />
+          ))}
         </div>
         <div>
           <img

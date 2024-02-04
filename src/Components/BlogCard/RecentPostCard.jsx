@@ -1,8 +1,9 @@
 import { FiUser } from "react-icons/fi";
 import { TbClockHour4 } from "react-icons/tb";
 import { capitalizeWords } from "../../Utilitis/Capitalize";
+import { Link } from "react-router-dom";
 
-const RecentPostCard = ({topPost}) => {
+const RecentPostCard = ({ topPost }) => {
   return (
     <div className="flex items-center gap-8 mb-5">
       <img
@@ -15,12 +16,12 @@ const RecentPostCard = ({topPost}) => {
           {capitalizeWords(topPost?.category)}
         </span>
         <div className="rounded-lg space-y-4">
-          <h1 className="text-2xl font-semibold hover:text-[#C5015F]">
-            {topPost?.title}
-          </h1>
-          <p>
-            {topPost?.shortDescription}
-          </p>
+          <Link to={`/blog-details/${topPost?._id}`}>
+            <h1 className="text-2xl font-semibold hover:text-[#C5015F]">
+              {topPost?.title}
+            </h1>
+          </Link>
+          <p>{topPost?.shortDescription}</p>
           <div className="flex items-center gap-3 mt-5">
             <div className="flex items-center gap-2 text-[#C5015F]">
               <FiUser></FiUser>

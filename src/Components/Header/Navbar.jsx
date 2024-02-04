@@ -11,15 +11,15 @@ const Navbar = () => {
     },
     {
       Name: "Life Style",
-      path: "/lifeStyle",
+      path: "/see-all-posts",
     },
     {
       Name: "Travel",
-      path: "/travel",
+      path: "/see-all-posts",
     },
     {
       Name: "Fitness",
-      path: "/fitness",
+      path: "/see-all-posts",
     },
     {
       Name: "Contact Us",

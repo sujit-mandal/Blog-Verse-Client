@@ -8,18 +8,21 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Spinner from "../Spinner/Spinner";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const { data: slides, isLoading } = useQuery({
     queryKey: ["bannerData"],
     queryFn: async () => {
-      const res = await fetch("https://blogverse-server.vercel.app/api/v1/banner-blogs");
+      const res = await fetch(
+        "https://blogverse-server.vercel.app/api/v1/banner-blogs"
+      );
       return res.json();
     },
   });
 
   if (isLoading) {
-    <Spinner/>
+    <Spinner />;
   }
 
   const settings = {
@@ -69,9 +72,11 @@ const Banner = () => {
                   <BsFire className="text-pink-600"></BsFire>Trending
                 </p>
               </div>
-              <h2 className="mb-4 text-left text-2xl md:text-5xl font-medium md:font-semibold ">
-                {slide?.title}
-              </h2>
+              <Link to={`/blog-details/${slide?._id}`}>
+                <h2 className="mb-4 text-left text-2xl md:text-5xl font-medium md:font-semibold ">
+                  {slide?.title}
+                </h2>
+              </Link>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
                   <FiUser></FiUser>
