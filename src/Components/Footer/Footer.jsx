@@ -98,7 +98,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#010E2E] py-2">
+      <div className="bg-[#002584] py-2">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center text-white">
           <p >Copyright © 2024 Blogverse. All rights reserved.</p>
           <div className="flex gap-2 items-center ">

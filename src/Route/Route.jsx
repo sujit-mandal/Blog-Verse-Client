@@ -10,8 +10,8 @@ import Featuredblogs from "../Pages/Featuredblogs";
 import Wishlist from "../Pages/Wishlist";
 import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog";
-import PrivateRoute from "./PrivateRoute";
 import SeeAllCard from "../Components/BlogCard/SeeAllCard";
+import Contact from "../Pages/Contact";
 
 const route = createBrowserRouter([
   {
@@ -40,11 +40,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/wishlist-blogs",
-        element: (
-          <PrivateRoute>
-            <Wishlist></Wishlist>,
-          </PrivateRoute>
-        ),
+        element: <Wishlist></Wishlist>,
       },
       {
         path: "/blog-details/:id",
@@ -52,13 +48,12 @@ const route = createBrowserRouter([
       },
       {
         path: "/update-blog/:id",
-        element: (
-          <PrivateRoute>
-            <UpdateBlog></UpdateBlog>
-          </PrivateRoute>
-        ),
+        element: <UpdateBlog></UpdateBlog>,
       },
-      
+      {
+        path: "/contact-us",
+        element: <Contact />,
+      },
     ],
   },
   {
@@ -71,7 +66,7 @@ const route = createBrowserRouter([
   },
   {
     path: "*",
-    element: <ErrorPage/>,
+    element: <ErrorPage />,
   },
 ]);
 

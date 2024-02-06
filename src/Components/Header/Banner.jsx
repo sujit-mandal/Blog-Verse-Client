@@ -61,9 +61,9 @@ const Banner = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 transition-opacity duration-300"></div>
+              <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 transition-opacity duration-300"></div>
             </div>
-            <div className="absolute left-0 bottom-0 pl-10 pb-10 w-3/5 text-white space-y-6">
+            <div className="bg-[#002584] w-full absolute left-0 bottom-0 pl-10 py-10 lg:bg-transparent lg:w-3/5 text-white space-y-6">
               <div className="flex gap-5 ">
                 <p className="bg-[#FF9900] text-left rounded-md font-semibold py-1 px-2">
                   {capitalizeWords(slide?.category)}
